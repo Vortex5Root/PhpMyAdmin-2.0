@@ -1,0 +1,2 @@
+# PhpMyAdmin2.0
+ 
