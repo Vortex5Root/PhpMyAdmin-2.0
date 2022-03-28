@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ImportFiles</title>
+    <style>
+    from_style {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    label {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .button {
+      background-color: #e7e7e7; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+    </style>
+</head>
+<body>
+    <center>
+     <form id="Import_Files" method="post" enctype = "multipart/form-data" class="from_style">
+          <b><label for="Token">Login Token:</label></b><br>
+            <input type="text" id="Token" name="Token"><br><br>
+          <b><label for="In">Import Token:</label></b><br>
+            <input type="text" id="In" name="In"><br><br>
+          <b><label for="file">Import Token:</label></b><br>
+            <input type="file" id="files" name="files" accept=".db" ><br><br><br>
+          <input type="submit" value="Submit" class="button">
+     </form>
+    </center>
+    <script>
+        document.getElementById("Import_Files").addEventListener("submit", myFunction);
+
+        function myFunction() {
+          var $_GET = {};
+          if(document.location.toString().indexOf('?') !== -1) {
+                var query = document.location
+                               .toString()
+                               // get the query string
+                               .replace(/^.*?\?/, '')
+                               // and remove any existing hash string (thanks, @vrijdenker)
+                               .replace(/#.*$/, '')
+                               .split('&');
+
+              for(var i=0, l=query.length; i<l; i++) {
+                 var aux = decodeURIComponent(query[i]).split('=');
+                 $_GET[aux[0]] = aux[1];
+              }
+          }
+          var Token = document.forms["Import_Files"]["Token"].value;
+          var Token_In = document.forms["Import_Files"]["In"].value;
+          var file = document.forms["Import_Files"]["files"].value;
+          if (Token == $_GET['Token'] && Token_In == $_GET['In'] && file != ''){
+              document.forms["Import_Files"].submit()
+          }else{
+              alert('Invalid Token');
+              sleep(2);
+              //window.location.replace("http://127.0.0.1:5000/Fruntion/?Token="+$_GET['Token']+"&In="+$_GET['In']);
+          }
+        }
+
+        /*function validateForm() {
+          var x = document.forms["Import_Files"]["Token"].value;
+          alert(x);
+
+          if x == '':
+            return alert('You need To Fill The Token To check or premission');
+          const Http = new XMLHttpRequest();
+          const url='http://127.0.0.1/Fruntion/?Login='+x;
+          alert(url);
+          Http.open("GET", url);
+          Http.send();
+          sleep(2);
+          Http.onreadystatechange = (e) => {
+              alert(e);
+              console.log(Http.responseText);
+              return true;
+          }
+          console.log('test');
+          return false;
+        }*/
+
+    </script>
+</body>
+</html>

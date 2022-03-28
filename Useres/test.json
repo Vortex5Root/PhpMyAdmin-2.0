@@ -1,0 +1,5 @@
+{
+  "User": "test",
+  "Passowrd": "7c2624707074f80105801444d1bfb26af5820c0972a8f8adb11acf9afaf786c425646e07e0674f2c99b2e11ca5db2afd9e5003e7d79a18337047b5cdb496b432",
+  "Premissios": "socket.dbs.login;socket.dbs.addDB;socket.dbs.rename;socket.dbs.deldb;socket.dbs.export;socket.dbs.import;socket.dbs.add_tabel.test;socket.dbs.get_tabels.test;websocket.dbs.export;websocket.dbs.import;websocket.dbs.login;"
+}
